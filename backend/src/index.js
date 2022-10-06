@@ -72,7 +72,7 @@ const resolvers = {
     number: pokemon => parseInt(pokemon.id, 10),
     image: pokemon => `https://img.pokemondb.net/artwork/${pokemon.name.toLowerCase().replace(/[&\\/\\\\#,+()$~%.'":*?<>{}]/g, '').replace(' ', '-')}.jpg`,
     sound: pokemon => `${BASE_URL}/sounds/${parseInt(pokemon.id, 10)}`,
-    evolutions: pokemon => _.map(pokemon.evolutions || [], ev => ({...ev, id: _.padStart(ev.id, 3, '0')})),
+    evolutions: pokemon =>  _.map(pokemon.evolutions || [], ev => ({...ev, id: _.padStart(ev.id, 3, '0')})),
     isFavorite: pokemon => !!favorites.get(pokemon.id)
   },
   PokemonAttack: {
@@ -87,14 +87,14 @@ const server = new ApolloServer({
   csrfPrevention: true,  // see below for more about this
   cache: "bounded",
   cors: {
-    origin: ["https://chokhonelidze.github.io"]
+    origin: ["https://chokhonelidze.github.io","http://localhost:3000/"]
   },
   plugins: [
     ApolloServerPluginLandingPageLocalDefault({ embed: true }),
   ],
 });
 const corsOptions = {
-  origin: ["https://chokhonelidze.github.io"]
+  origin: ["https://chokhonelidze.github.io","http://localhost:3000"]
 };
 server.applyMiddleware({ app, cors: corsOptions, path: "/graphql" });
 
