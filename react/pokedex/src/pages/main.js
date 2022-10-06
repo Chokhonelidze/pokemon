@@ -3,7 +3,7 @@ import { Filter, Search, View } from "../App";
 import { NormalView, ListView } from "../components/viewGenerator";
 import { query } from "../functions/queries";
 
-const server = "http://localhost:4000/graphql";
+const server = process.env.REACT_APP_SERVER?process.env.REACT_APP_SERVER:"http://localhost:4000/graphql";
 
 /**
  * 

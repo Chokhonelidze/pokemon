@@ -1,18 +1,22 @@
 #!/usr/bin/env node
-const { ApolloServer } = require('apollo-server-express');
-const express = require('express');
-const fs = require('fs');
-const _ = require('lodash');
-const pokemonsData = require('./pokemons');
+import { ApolloServer } from 'apollo-server-express';
+import {
+  ApolloServerPluginLandingPageLocalDefault,
+  ApolloServerPluginLandingPageProductionDefault
+} from "apollo-server-core";
+import express from 'express';
+import * as fs from 'fs';
+import * as _ from 'lodash';
+import pokemonsData from './pokemons.json' assert {type:'json'}
 
-const PORT = 4000;
-const BASE_URL = `http://localhost:${PORT}`;
+const PORT = process.env.PORT || 4000;
+const BASE_URL = ``;
 
-const typeDefs = fs.readFileSync(`${__dirname}/schema.graphql`, 'utf-8');
+const typeDefs = fs.readFileSync(`src/schema.graphql`, 'utf-8');
 let favorites = new Map();
 
 const app = express();
-app.get('/sounds/:id', (req, res) => res.sendFile(`${__dirname}/sounds/${req.params.id}.mp3`));
+app.get('/sounds/:id', (req, res) => res.sendFile(`src/sounds/${req.params.id}.mp3`));
 
 const resolvers = {
   Query: {
@@ -77,8 +81,22 @@ const resolvers = {
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
-server.applyMiddleware({ app });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  csrfPrevention: true,  // see below for more about this
+  cache: "bounded",
+  cors: {
+    origin: ["https://chokhonelidze.github.io"]
+  },
+  plugins: [
+    ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+  ],
+});
+const corsOptions = {
+  origin: ["https://chokhonelidze.github.io"]
+};
+server.applyMiddleware({ app, cors: corsOptions, path: "/graphql" });
 
 app.listen({ port: PORT }, () => {
   console.log(`🚀  Pokemon GraphQL server running at ${BASE_URL}${server.graphqlPath}`);

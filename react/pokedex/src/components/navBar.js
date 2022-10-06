@@ -4,7 +4,7 @@ import { View, Page,Search } from "../App";
 import { Dropdown } from 'react-dropdown-now';
 import { getColor } from "../functions/getColors";
 import 'react-dropdown-now/style.css';
-const server = "http://localhost:4000/graphql";
+const server = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER:"http://localhost:4000/graphql";
 /**
  * 
  * @description builds menu search and dropdown elements.

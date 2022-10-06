@@ -1,4 +1,4 @@
-const server = "http://localhost:4000/graphql";
+const server = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER:"http://localhost:4000/graphql";
 /**
  * @description function is used to get pockemons from database.
  * @param {String} q 
