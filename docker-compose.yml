@@ -1,0 +1,16 @@
+version: '3'
+services:
+  client:
+    build: "react/pokedex"
+
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "server"
+    image: chokhonelidze/client:latest
+
+  server: 
+    build: "backend"
+    ports:
+      - "4000:4000"
+    image: chokhonelidze/backend:latest

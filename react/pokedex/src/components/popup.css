@@ -1,0 +1,75 @@
+.popup {  
+    position: fixed;  
+    width: 100%;  
+    height: 100%;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    margin: auto;  
+    background-color: rgba(0,0,0, 0.5);  
+    z-index: 1000;
+  }  
+  .popup_open {  
+    position: absolute;  
+    left: 25%;  
+    right: 25%;  
+    top: 5%;  
+    bottom: 5%;  
+    margin: auto;  
+    border-radius: 20px;  
+    background: white;  
+  }
+
+  .x_button {
+    position: sticky;
+    float: right;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: red;
+    color: blue;
+    border-color: steelblue;
+    z-index: 100;
+  }
+  .x_button:hover {
+      background-color: blue;
+      color:yellow;
+  }
+  @media screen and (max-width: 750px) {
+    .popup_open {  
+        position: absolute;  
+        left: 5%;  
+        right: 5%;  
+        top: 5%;  
+        bottom: 5%;  
+        margin: auto;  
+        border-radius: 20px;  
+        background: white;  
+      }
+      .total {
+        margin-left: 2rem; 
+      }
+      .users {
+        margin-left: 2rem; 
+        width:80%
+      }
+  }
+
+  .evalButton {
+    position: sticky;
+    left: 40%;
+    right: 60%;
+    color: #91c948;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-radius: 5%;
+    background-color: #322aa5;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+  .bigpokemon {
+    top:5%;
+    zoom:80%;
+  }

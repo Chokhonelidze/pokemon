@@ -1,0 +1,13 @@
+.mid_container {
+    display: flex;
+    flex-flow:wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 160px;
+}
+.mid_container_list {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}

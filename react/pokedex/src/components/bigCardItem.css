@@ -1,0 +1,99 @@
+.bigpokemon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 40px;
+  left: 20px;
+}
+.bigpokemon img {
+  width: 200px;
+  height: 180px;;
+}
+.bigCard-body {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 100%;
+  height: 380px;
+}
+
+.bigCard-title {
+  grid-row: 1;
+  grid-column: 1/5;
+  margin-left: 15px;
+  font-weight: bolder;
+  font-size: x-large;
+}
+.bigCard-types {
+  grid-row: 2;
+  grid-column: 1/5;
+  margin-left: 10px;
+  display: flex;
+}
+.bigCard-types h6 {
+  margin-left: 5px;
+}
+.big_like_button {
+  grid-row: 1/3;
+  grid-column: 8/10;
+  font-size: 40px;
+}
+.cardHP {
+  grid-row: 6;
+  grid-column: 1/7;
+  border-radius: 10%;
+  margin-left: 15px;
+  background-color: brown;
+}
+
+.HP {
+    grid-row: 6;
+    grid-column: 8/11;
+    font-weight: bold;
+}
+.cardCP {
+    grid-row: 4;
+    grid-column: 1/7;
+    border-radius: 10%;
+    margin-left: 15px;
+    background-color: rgb(50, 42, 165);
+  }
+  
+  .CP {
+      grid-row: 4;
+      grid-column: 8/11;
+      font-weight: bold;
+  }
+  .WeightAndHeight {
+      grid-row: 8;
+      grid-column: 1/11;
+      margin-left:15px;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      align-items: center;
+  }
+  .Wcontainer {
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    margin: auto;
+  }
+  .audio {
+    position: absolute;
+    top: 150px;
+    left: 30px;
+    font-size: 50px;
+    cursor: pointer;
+  }
+  .evolutions {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    background: #f0f7fff5;
+  }
+  .evolutions .pokemon {
+    padding:5px;
+    width: 12rem;
+    height: 16rem;
+  }
