@@ -2,7 +2,7 @@ import React from "react";
 import "./cardItem.css";
 import { getColor } from "../functions/getColors";
 import Popup from "./popup";
-const server = "http://localhost:4000/graphql";
+const server = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER :"http://localhost:4000/graphql";
 /**
  *
  * @description builds pokemon card item
