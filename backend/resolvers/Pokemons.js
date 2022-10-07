@@ -63,7 +63,8 @@ export const mutation = {
         return pokemon;
       },
 }
-
+let BASE_URL = process.env.BASE_SERVER
+? `${process.env.BASE_SERVER}/src`: 'localhost:4000/src';
 export const objects = {
     Pokemon: {
         number: (pokemon) => parseInt(pokemon.id, 10),
@@ -74,9 +75,9 @@ export const objects = {
             .replace(" ", "-")}.jpg`,
         sound: (pokemon) => `${BASE_URL}/sounds/${parseInt(pokemon.id, 10)}`,
         evolutions: (pokemon) =>
-          _.map(pokemon.evolutions || [], (ev) => ({
+        pokemon.evolutions.map(  (ev) => ({
             ...ev,
-            id: _.padStart(ev.id, 3, "0"),
+            id:String(ev.id).padStart(3, "0"),
           })),
         isFavorite: (pokemon) => !!favorites.get(pokemon.id),
       },
