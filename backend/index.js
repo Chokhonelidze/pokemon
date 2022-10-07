@@ -92,16 +92,7 @@ const server = new ApolloServer({
     });
     }
 
-  },
-  plugins: [
-    // Install a landing page plugin based on NODE_ENV
-    process.env.NODE_ENV === "production"
-      ? ApolloServerPluginLandingPageProductionDefault({
-          graphRef: "My-Graph-zz9m3@current",
-          footer: false,
-        })
-      : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
-  ],
+  }
 });
 
 // The `listen` method launches a web server.

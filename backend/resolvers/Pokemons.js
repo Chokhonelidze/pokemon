@@ -64,7 +64,7 @@ export const mutation = {
       },
 }
 let BASE_URL = process.env.BASE_SERVER
-? `${process.env.BASE_SERVER}/src`: 'localhost:4000/src';
+? `${process.env.BASE_SERVER}src`: 'localhost:4000/src';
 export const objects = {
     Pokemon: {
         number: (pokemon) => parseInt(pokemon.id, 10),
