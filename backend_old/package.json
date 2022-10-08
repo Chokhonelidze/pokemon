@@ -1,23 +1,35 @@
 {
-  "name": "@axelhzf/graphql-pokemon-server",
+  "name": "graphql-pokemon-server",
   "description": "Get information of a Pokémon with GraphQL",
-  "version": "1.0.3",
-  "repository": "https://github.com/axelhzf/graphql-pokemon-server",
-  "license": "MIT",
-  "author": {
-    "name": "Axel Hernández Ferrera",
-    "email": "axelhzf@gmail.com",
-    "url": "http://github.com/axelhzf"
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chokhonelidze/pokemon"
   },
+  "license": "MIT",
+  "author": "Axel Hernández Ferrera <axelhzf@gmail.com> (http://github.com/axelhzf)",
   "scripts": {
     "start": "node src/index.js"
   },
-  "bin": "src/index.js",
+  "bin": {
+    "graphql-pokemon-server": "src/index.js"
+  },
   "dependencies": {
     "apollo-server-express": "^2.25.3",
     "express": "^4.18.1",
     "graphql": "^15.8.0",
     "lodash": "^4.17.21",
     "node": "^18.10.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Chokhonelidze/pokemon/issues"
+  },
+  "homepage": "https://github.com/Chokhonelidze/pokemon#readme",
+  "main": "src/index.js",
+  "devDependencies": {},
+  "keywords": [
+    "graphql",
+    "apollo",
+    "pokemons"
+  ]
 }
