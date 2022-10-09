@@ -18,6 +18,7 @@ services:
     image: chokhonelidze/backend:latest
     environment:
       - DB=mongodb://mongo:27017/app_development
+      - WEB_SERVER=http://localhost:3000
     depends_on:
       - mongo
     links:
