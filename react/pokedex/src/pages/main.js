@@ -1,6 +1,7 @@
 import React from "react";
 import { Filter, Search, View } from "../App";
 import { NormalView, ListView } from "../components/viewGenerator";
+import Loading from "../components/loading";
 import { query } from "../functions/queries";
 
 const server = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER :"http://localhost:4000/graphql";
@@ -12,6 +13,7 @@ const server = process.env.REACT_APP_SERVER ? process.env.REACT_APP_SERVER :"htt
  * @returns {React.NormalView,React.ListView} NormalView and ListView
  */
 function Home(props) {
+  const [isLoading,setLoading] = React.useState(true);
   const [count, setCount] = React.useState(0);
   const [data, setData] = React.useState(null);
   const [offset, setOffset] = React.useState(0);
@@ -47,7 +49,7 @@ function Home(props) {
      *  this is the callback function used for data load.
      */
     if (
-      window.innerHeight + document.documentElement.scrollTop ===
+      window.innerHeight + document.documentElement.scrollTop+1 >=
       document.scrollingElement.scrollHeight
     ) {
       if (data && data.length > count) {
@@ -58,7 +60,7 @@ function Home(props) {
      console.log(newLimit,newOfset);
      
     function mergeData(newData) {
-      if(newData && newData.length >0) {
+      if(newData && newData.length > 0) {
         setData([...data,...newData]);
         setOffset(newOfset);
       }
@@ -71,6 +73,7 @@ function Home(props) {
     }
       query(q,parameters,mergeData);
     }
+   
   }, [data, setData, count, limit,filter,offset,search,q]);
 
       /**
@@ -101,6 +104,7 @@ function Home(props) {
         if (!error) {
           if (data) {
             setCount(data.data.pokemons.count);
+            setLoading(false);
           }
         } else {
           console.log(error);
@@ -131,7 +135,10 @@ function Home(props) {
    * if style is 0 it will load greed layout.
    * if style is 1 it will load list layout.
    */
-  if (style === 0) {
+  if(isLoading){
+    view = <Loading />
+  }
+  else if (style === 0) {
     if (data) {
       view = <NormalView data={data} />;
     }

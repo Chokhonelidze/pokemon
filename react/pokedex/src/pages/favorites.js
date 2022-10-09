@@ -1,6 +1,7 @@
 import React from "react";
 import { View,Filter,Search } from "../App";
 import { NormalView, ListView } from "../components/viewGenerator";
+import Loading from "../components/loading";
 import { query } from "../functions/queries";
 
 /**
@@ -9,6 +10,7 @@ import { query } from "../functions/queries";
  * @returns {React.NormalView,React.ListView} NormalView and ListView
  */
 function Favorites() {
+    const [isLoading,setLoading] = React.useState(true);
     const [data,setData] = React.useState(null);
     const [style, setStyle] = React.useContext(View);
     const [isUpdated,setUpdated] = React.useState(false);
@@ -38,7 +40,7 @@ function Favorites() {
       }
       setData(null);
       query(q,params,setData);
-      console.log(data);
+      setLoading(false);
     },[q,search,filter]);
     React.useEffect(()=>{
       update();
@@ -49,7 +51,10 @@ function Favorites() {
    * if style is 0 it will load greed layout.
    * if style is 1 it will load list layout.
    */
-  if (style === 0) {
+  if(isLoading){
+      view = <Loading />
+  }
+  else if (style === 0) {
     if (data) {
       view = <NormalView data={data} />;
     }
