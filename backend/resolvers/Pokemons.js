@@ -74,11 +74,16 @@ export const objects = {
             .replace(/[&\\/\\\\#,+()$~%.'":*?<>{}]/g, "")
             .replace(" ", "-")}.jpg`,
         sound: (pokemon) => `${BASE_URL}/sounds/${parseInt(pokemon.id, 10)}.mp3`,
-        evolutions: (pokemon) =>
-        pokemon.evolutions.map(  (ev) => ({
+        evolutions: (pokemon) =>{
+          if(pokemon?.evolutions ){
+          return pokemon.evolutions.map(  (ev) => ({
             ...ev,
             id:String(ev.id).padStart(3, "0"),
-          })),
+          }))
+          
+        }
+        else return [];
+        },
         isFavorite: (pokemon) => !!favorites.get(pokemon.id),
       },
       PokemonAttack: {
