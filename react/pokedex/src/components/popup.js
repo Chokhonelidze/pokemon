@@ -3,7 +3,7 @@ import "./popup.css";
 import { query_single } from "../functions/queries";
 import { BigCardItem } from "./bigCardItem";
 import { CardItem } from "./cardItem";
-
+import Loading from "./loading";
 /**
  *
  * @description builds popup page for single pokemon
@@ -13,6 +13,8 @@ import { CardItem } from "./cardItem";
 export default function Popup(props) {
   let [data, setData] = React.useState(null);
   let [evolShow,setEvolShow] = React.useState(false);
+  const [isLoading,setLoading] = React.useState(true);
+
   const q = `
     query getPokemon($id: ID!) {
         pokemonById(id:$id) {
@@ -47,6 +49,7 @@ export default function Popup(props) {
       id: props.id,
     };
     query_single(q, params, setData);
+    setLoading(false);
   }, [q, props.id]);
 
   function handleEvolutions(e) {
@@ -84,6 +87,7 @@ export default function Popup(props) {
         <button onClick={props.close} className="x_button">
           X
         </button>
+        {isLoading?<Loading /> : <>
         {evalButton}
         {data ? (
           <> 
@@ -105,6 +109,8 @@ export default function Popup(props) {
         ) : (
           ""
         )}
+        </>
+      }
       </div>
       :
     </div>
