@@ -17,7 +17,11 @@ export const query = {
       if (filter.type) {
         const regex = new RegExp(filter.type, "i");
         pokemons = pokemons.filter((p) => {
-          return p.types.match(regex);
+          for(let i=0;i < p.types.length;i++){
+            if(p.types[i].match(regex)){
+              return true;
+            }
+          }
         });
       }
       if (filter.isFavorite) {
